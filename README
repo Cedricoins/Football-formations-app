@@ -1,0 +1,34 @@
+/*
+README
+------
+Objective: to generate (or iterate through) all possible combinations of player positioning on a pitch (configurable grid), using a web interface. A Solidity smart contract allows us to save the hash of a formation (avoiding the need to store complete formations in a chain to save cost).
+
+Important: the number of combinations grows rapidly. This project includes:
+
+- Off-chain generation via a serverless API (Vercel)
+
+- Pagination/limiting to prevent exceeding the limit
+
+- React frontend (using Tailwind classes) to display a field and combination pages
+- Minimal Solidity contract to "register"/verify a training hash
+
+Included files (in this document):
+
+- contracts/FormationManager.sol (Solidity)
+- api/combinations.js (Vercel serverless function, Node.js)
+- package.json (dependencies for development/deployment)
+- src/App.jsx (React component - default export)
+
+Quick Start Notes:
+
+1) Deploy the contract (optional) via Hard Hat/Foundry, etc. (Address and ABI can be added to the frontend if you want to save hashes)
+2) Deploy the API on Vercel (the api/combinations.js file in /api)
+3) Deploy the frontend (React) on Vercel or locally.
+
+Default limits in the code:
+
+- Field: rows=6, cols=4 -> 24 cells by default
+- Number of players (k): 4 by default to prevent overload
+- The API accepts the following query parameters: rows, columns, players, page (zero-based), limit
+
+*/
